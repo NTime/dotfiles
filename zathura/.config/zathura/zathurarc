@@ -1,0 +1,7 @@
+set statusbar-h-padding 75
+set statusbar-v-padding 15
+set page-padding 1
+set selection-clipboard clipboard
+set adjust-open best-fit
+map K zoom in
+map J zoom out
