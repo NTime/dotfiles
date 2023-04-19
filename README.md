@@ -3,14 +3,17 @@
 You will need `git` and GNU `stow`
 
 1. Clone into your `$HOME`
-2. Run `stow` to symlink
+2. Run `stow` inside the directory to symlink
 
+For everything:
 ```
-stow * # Everything
+stow * 
 ```
+If you want only the directories:
 ```
-stow */ # If you want only the directories
+stow */ 
 ```
+For a especific file:
 ```
-stow <file_name> # For a especific file
+stow <file_name>
 ```
