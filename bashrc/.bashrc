@@ -82,3 +82,4 @@ fi
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export npm_config_prefix="$HOME/.local"

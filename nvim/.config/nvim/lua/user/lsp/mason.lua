@@ -7,8 +7,7 @@ local servers = {
 	"pyright",
 	"bashls",
 	"jsonls",
-	"yamlls",
-  "r_language_server",
+	-- "yamlls",
   "marksman",
 }
 

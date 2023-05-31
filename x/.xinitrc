@@ -61,13 +61,13 @@ setxkbmap br &
 # Display Resolution option for when in dual monitor:
 # notebook(1920x1080) and side monitor(2560x1080)
 # Notebook only: 
-#xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --off --output DP-1 --off --output HDMI-2 --off &
+#xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI1 --off --output DP1 --off --output HDMI2 --off &
 # Monitor only:
-#xrandr --output eDP-1 --off --output HDMI-1 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off &
+# xrandr --output eDP1 --off --output HDMI1 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off &
 # Both:
-my_laptop_external_monitor=$(xrandr --query | grep 'HDMI-1')
+my_laptop_external_monitor=$(xrandr --query | grep 'HDMI1')
 if [[ $my_laptop_external_monitor = *connected* ]]; then
-    xrandr --output eDP-1 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-1 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output DP-1 --off --output HDMI-2 --off &
+    xrandr --output eDP1 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI1 --primary --mode 2560x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off &
 fi
 
 # Wallpaper
@@ -75,9 +75,6 @@ nitrogen --restore &
 
 # Cursor
 xsetroot -cursor_name left_ptr &
-
-# Compositor
-picom &
 
 # Execute bspwm
 exec bspwm
