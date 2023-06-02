@@ -71,7 +71,7 @@ if [[ $my_laptop_external_monitor = *connected* ]]; then
 fi
 
 # Wallpaper
-nitrogen --restore &
+~/.scripts/fehbg &
 
 # Cursor
 xsetroot -cursor_name left_ptr &
