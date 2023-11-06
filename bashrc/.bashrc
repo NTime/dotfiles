@@ -62,12 +62,17 @@ fi
 
 # Spark----------------------------------------------------------
 if [ -z "$SPARK_HOME" ] ; then
-  export SPARK_HOME=$HOME/Builds/apache-spark/spark
+  export SPARK_HOME=$HOME/Builds/apache_spark/spark
 fi
 
 if [ -d "$SPARK_HOME/bin" ] ;
   then PATH="$SPARK_HOME/bin:$PATH"
 fi
+
+if [ -d "$SPARK_HOME/sbin" ] ;
+  then PATH="$SPARK_HOME/sbin:$PATH"
+fi
+
 # PySpark driver environment variables to open Spark in browser using "pyspark". Test it inside the notebook using "print(sc)" or "sc.version". sc stands for "spark context".
 if [ -z "$PYSPARK_DRIVER_PYTHON" ] ; then
   export PYSPARK_DRIVER_PYTHON=jupyter
