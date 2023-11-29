@@ -11,14 +11,14 @@ Make sure you have installed `git` and `stow`
 1. Clone into your `$HOME`
 2. Run `stow` inside the cloned directory
 
-```
+```sh
 stow *  # For everything
 ```
 
-```
+```sh
 stow */  # Only the directories
 ```
 
-```
+```sh
 stow <file_name>  # For a especific file
 ```
