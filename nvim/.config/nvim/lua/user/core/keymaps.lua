@@ -28,8 +28,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -68,8 +68,7 @@ keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Open nvim-tree on current file
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts) -- Nvim-tree
 keymap("n", "<leader>w", "<cmd>w!<CR>", opts)
 keymap("n", "<leader>q", "<cmd>q!<CR>", opts)
 keymap("n", "<leader>c", "<cmd>bdelete!<CR>", opts) -- Close Buffer
@@ -82,3 +81,6 @@ keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts) -- Buffers
 keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts) -- Find string in cwd
 keymap("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts) -- Find string under cursor in cwd
 keymap("n", "<leader>fc", "<cmd>Telescope man_pages<cr>", opts) -- Find string in man pages
+-- Telescope searches only in vim cwd. Use it to change the search scope
+keymap("n", "<leader>fd", "<cmd>cd %:p:h<cr>", opts) -- Changes vim cwd to the current focused file on window
+

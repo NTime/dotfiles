@@ -6,19 +6,26 @@ return {
     local ibl = require("ibl")
 
     ibl.setup({
+      indent = {
+        char = "▏",
+        tab_char = "▏",
+      },
+      scope = {enabled = false},
       exclude = {
-        filetypes = { "terminal", "nofile" },
-        buftypes = {
+        filetypes = {
           "help",
-          "startify",
           "dashboard",
-          "neogitstatus",
           "NvimTree",
-          "Trouble"
+          "neo-tree",
+          "Trouble",
+          "trouble",
+          "toggleterm",
+          "mason",
+          "notify",
+          "lazy",
+          "alpha"
         },
       },
-      indent = { char = "▏" },
-      whitespace = { remove_blankline_trail = true },
     })
   end
 }
