@@ -46,5 +46,8 @@ return {
       ignore_install = { "" },     -- List of parsers to ignore installing
       sync_install = false,        -- install languages synchronously (only applied to `ensure_installed`)
     })
+
+    -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
+    require('ts_context_commentstring').setup {}
   end,
 }
