@@ -14,7 +14,7 @@ return {
         disable = { "css" }
       },
       -- enable indentation
-      indent = { enable = true, disable = { "python", "css" } },
+      indent = { enable = true, disable = { "python", "css", "yaml" } },
       -- enable autotagging (w/ nvim-ts-autotag plugin)
       autotag = {
         enable = true,
