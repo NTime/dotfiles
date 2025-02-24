@@ -1,37 +1,41 @@
-vim.cmd [[
-  augroup _general_settings
-    autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
-    autocmd BufWinEnter * :set formatoptions-=cro
-    autocmd FileType qf set nobuflisted
-  augroup end
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('_markdown', { clear = true }),
+  pattern = { "markdown", "rmarkdown" },
+  callback = function()
+    vim.opt.wrap = true
+  end,
+})
 
-  augroup _git
-    autocmd!
-    autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
-  augroup end
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when copying text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
-  augroup _markdown
-    autocmd!
-    autocmd FileType markdown setlocal wrap
-    " autocmd FileType markdown setlocal spell    " spell check option
-  augroup end
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+  callback = function()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end,
+})
 
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd = 
-  augroup end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client then return end
 
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
-]]
-
--- Autoformat
--- augroup _lsp
---   autocmd!
---   autocmd BufWritePre * lua vim.lsp.buf.formatting()
--- augroup end
+    ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
+    if client.supports_method('textDocument/formatting') then
+      -- Format the current buffer on save
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({bufnr = args.buf, id = client.id})
+        end,
+      })
+    end
+  end,
+})

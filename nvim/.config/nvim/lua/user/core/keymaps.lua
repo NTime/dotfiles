@@ -40,9 +40,9 @@ keymap("n", "<A-j>", ":m .+1<CR>==", opts)
 keymap("n", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Insert --
--- Press jk fast to exit insert mode 
---keymap("i", "jk", "<ESC>", opts)
---keymap("i", "kj", "<ESC>", opts)
+-- Press jk fast to exit insert mode
+keymap("i", "jk", "<ESC>", opts)
+keymap("i", "kj", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -68,19 +68,26 @@ keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+keymap("n", "<leader>\\", function() -- Change cwd to the current file and open terminal
+  vim.cmd.cd("%:p:h")
+  vim.cmd.term()
+end)
+
+keymap("t", "<esc>", "<C-\\><C-N>", term_opts)
+
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts) -- Nvim-tree
 keymap("n", "<leader>w", "<cmd>w!<CR>", opts)
 keymap("n", "<leader>q", "<cmd>q!<CR>", opts)
-keymap("n", "<leader>c", "<cmd>bdelete!<CR>", opts) -- Close Buffer
+keymap("n", "<leader>c", "<cmd>bdelete!<CR>", opts)   -- Close Buffer
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts) -- No search highlight
 
 --Telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts) -- Fuzzy find files in cwd
-keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts) -- Fuzzy find recent files
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts) -- Buffers
-keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts) -- Find string in cwd
-keymap("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts) -- Find string under cursor in cwd
-keymap("n", "<leader>fc", "<cmd>Telescope man_pages<cr>", opts) -- Find string in man pages
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)  -- Fuzzy find files in cwd
+keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)   -- Fuzzy find help
+keymap("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", opts)    -- Fuzzy find recent files
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)     -- Buffers
+keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts)   -- Find string in cwd
+keymap("n", "<leader>fg", "<cmd>Telescope grep_string<cr>", opts) -- Find string under cursor in cwd
+keymap("n", "<leader>fm", "<cmd>Telescope man_pages<cr>", opts)   -- Find string in man pages
 -- Telescope searches only in vim cwd. Use it to change the search scope
-keymap("n", "<leader>fd", "<cmd>cd %:p:h<cr>", opts) -- Changes vim cwd to the current focused file on window
-
+keymap("n", "<leader>fd", "<cmd>cd %:p:h<cr>", opts)              -- Changes vim cwd to the current focused file on window

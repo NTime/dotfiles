@@ -18,19 +18,19 @@ return {
       ui = {
         border = "none",
         icons = {
-          package_installed = "◍",
-          package_pending = "◍",
-          package_uninstalled = "◍",
+          package_installed = "✓",
+          package_pending = "➜",
+          package_uninstalled = "✗",
         },
       },
-    	log_level = vim.log.levels.INFO,
-    	max_concurrent_installers = 4,
+      log_level = vim.log.levels.INFO,
+      max_concurrent_installers = 4,
     })
 
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-        "tsserver",
+        "ts_ls",
         "html",
         "cssls",
         "tailwindcss",
@@ -44,19 +44,18 @@ return {
         "jdtls",
       },
       -- auto-install configured servers (with lspconfig)
-      automatic_installation = true, -- not the same as ensure_installed
+      automatic_installation = true,       -- not the same as ensure_installed
     })
 
     mason_tool_installer.setup({
       ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint", -- python linter
-        "eslint_d", -- js linter
+        "prettier",         -- prettier formatter
+        "stylua",           -- lua formatter
+        "isort",            -- python formatter
+        "black",            -- python formatter
+        "pylint",           -- python linter
+        "eslint_d",         -- js linter
       },
     })
   end,
 }
-

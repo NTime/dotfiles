@@ -1,24 +1,15 @@
 # My GNU/Linux config
 
-I'm using [GNU Stow](https://www.gnu.org/software/stow/) to easily manage my config. And it's the reason the filepaths on this repository looks weird. You can take a look at Stow's [documentation](https://www.gnu.org/software/stow/manual/) for more information
-
-## Prerequisites
-
-Make sure you have installed `git` and `stow`
+This repository is structured to make use of [GNU Stow](https://www.gnu.org/software/stow/).
 
 ## Installing
 
-1. Clone into your `$HOME`
-2. Run `stow` inside the cloned directory
+You can either manually copy the files to their respective directories or use Stow for symlink management:
+
+1. Make sure `stow` is installed. 
+2. Run `stow` inside the cloned directory.
 
 ```sh
-stow *  # For everything
+stow -t ~/ nvim/  # For Neovim configuration 
 ```
 
-```sh
-stow */  # Only the directories
-```
-
-```sh
-stow <file_name>  # For a especific file
-```

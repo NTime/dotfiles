@@ -1,9 +1,17 @@
 return {
-  "luisiacc/gruvbox-baby",
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  priority = 1000, -- make sure to load this before all the other start plugins
-  config = function()
-    vim.g.gruvbox_baby_background_color = "dark"
-    vim.cmd([[colorscheme gruvbox-baby]])
-  end,
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+
+    config = function()
+      local tokyonight = require("tokyonight")
+
+      tokyonight.setup({
+        style = "night",
+      })
+
+      vim.cmd.colorscheme "tokyonight"
+    end
+  }
 }

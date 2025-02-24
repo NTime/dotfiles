@@ -2,13 +2,19 @@ return {
   "hrsh7th/nvim-cmp", -- completion plugin
   event = "InsertEnter",
   dependencies = {
-    "hrsh7th/cmp-buffer", -- buffer completions
-    "hrsh7th/cmp-path", -- path completions
+    "hrsh7th/cmp-buffer",       -- buffer completions
+    "hrsh7th/cmp-path",         -- path completions
     "saadparwaiz1/cmp_luasnip", -- snippet completions
     "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua", -- lua config completions
-    -- snippets
-    "L3MON4D3/LuaSnip", --snippet engine
+    "hrsh7th/cmp-nvim-lua",     -- lua config completions
+    -- snippets:
+    {
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+      -- install jsregexp (optional!).
+      build = "make install_jsregexp"
+    },
     "rafamadriz/friendly-snippets", -- a bunch of snippets to use
   },
   config = function()
@@ -60,12 +66,11 @@ return {
         end,
       },
       mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
         ["<C-e>"] = cmp.mapping {
           i = cmp.mapping.abort(),
           c = cmp.mapping.close(),
