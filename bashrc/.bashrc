@@ -55,6 +55,10 @@ if [ -d "$HOME/.scripts" ] ;
   then PATH="$HOME/.scripts:$PATH"
 fi
 
+if [ -d "$HOME/.cargo/bin/" ] ;
+  then PATH="$HOME/.cargo/bin/:$PATH"
+fi
+
 # Neovim binary:
 if [ -d "$HOME/Builds/nvim/neovim_install/bin" ] ;
   then PATH="$HOME/Builds/nvim/neovim_install/bin:$PATH"
