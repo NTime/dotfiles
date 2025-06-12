@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-scale '/home/luis/Images/swamp_1920x750.jpg' '/home/luis/Images/night_waterfall_1920x1080.jpg' 

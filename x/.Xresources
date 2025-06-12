@@ -1,0 +1,9 @@
+!-- Xft settings -- !
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+
+st.borderpx: 18
+st.font: Fira Code:pixelsize=18:antialias=true

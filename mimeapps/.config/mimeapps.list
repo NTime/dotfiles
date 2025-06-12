@@ -1,0 +1,80 @@
+# Part of xdg-utils
+#
+# Associate manually to an app or use:
+#
+# xdg-mime default feh.desktop image/jpeg
+# xdg-mime default feh.desktop image/png
+#
+# To discover a MIME association:
+#
+# xdg-mime query default image/jpeg
+#
+# To discover a file MIME type:
+#
+# file --mime-type image.jpg
+#
+# To discover an app .desktop name:
+#
+# ls /usr/share/applications | grep feh
+#
+# Apply the new .desktop data
+#
+# update-desktop-database ~/.local/share/applications
+
+
+[Default Applications]
+
+# Browser
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+
+# E-mail
+x-scheme-handler/mailto=thunderbird.desktop
+message/rfc822=thunderbird.desktop
+application/x-extension-eml=thunderbird.desktop
+
+# Docs
+application/pdf=org.pwmt.zathura.desktop
+application/epub+zip=org.pwmt.zathura.desktop
+application/x-mobipocket-ebook=calibre.desktop
+text/plain=nvim.desktop
+text/x-python=nvim.desktop
+text/x-c++src=nvim.desktop
+text/x-csrc=nvim.desktop
+text/x-shellscript=nvim.desktop
+text/markdown=nvim.desktop
+text/x-yaml=nvim.desktop
+application/json=nvim.desktop
+application/x-shellscript=nvim.desktop
+application/x-executable=nvim.desktop
+
+# Apps
+application/vnd.microsoft.portable-executable=wine.desktop
+application/x-ms-dos-executable=wine.desktop
+
+# Image
+image/jpeg=swayimg.desktop
+image/png=swayimg.desktop
+image/gif=swayimg.desktop
+image/webp=swayimg.desktop
+image/svg+xml=swayimg.desktop
+image/bmp=swayimg.desktop
+image/tiff=swayimg.desktop
+image/heic=swayimg.desktop
+
+# Audio
+audio/mpeg=mpv.desktop
+audio/ogg=mpv.desktop
+audio/x-wav=mpv.desktop
+audio/vnd.wave=mpv.desktop
+audio/flac=mpv.desktop
+
+# Video
+video/mp4=mpv.desktop
+video/x-matroska=mpv.desktop
+video/webm=mpv.desktop
+video/avi=mpv.desktop
+video/x-msvideo=mpv.desktop
+video/mp2t=vlc.desktop
