@@ -1,4 +1,4 @@
-/#!bin/sh
+#!/bin/sh
 
 # Execute this script inside nvim repo
 cmake --build build/ --target uninstall
