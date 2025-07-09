@@ -1,4 +1,6 @@
 configuration {
+    modes: [ run, drun ];
+    icon-theme: "Adwaita";
 }
 
-@theme "simple-tokyonight"
+@theme "tokyonight"
