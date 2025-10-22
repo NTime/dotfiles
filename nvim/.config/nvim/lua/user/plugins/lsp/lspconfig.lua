@@ -17,11 +17,7 @@ return {
   },
 
   config = function()
-    local lspconfig = require("lspconfig")
-
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
-    local mason_lspconfig = require("mason-lspconfig")
 
     local keymap = vim.keymap
 
@@ -52,16 +48,16 @@ return {
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    -- Change the Diagnostic symbols in the sign column
-    local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
-
     vim.diagnostic.config({
       virtual_text = false, -- Disable noisy error messages
-      signs = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = "",
+          [vim.diagnostic.severity.WARN] = "",
+          [vim.diagnostic.severity.HINT] = "󰠠",
+          [vim.diagnostic.severity.INFO] = "",
+        },
+      },
       underline = true,
       update_in_insert = true,
       severity_sort = true,
@@ -74,13 +70,8 @@ return {
       },
     })
 
-    mason_lspconfig.setup_handlers({
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup({
-          capabilities = capabilities,
-        })
-      end,
+    vim.lsp.config("*", {
+      capabilities = capabilities,
     })
   end,
 }
